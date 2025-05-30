@@ -1,0 +1,28 @@
+
+$body-bg:#000;
+$primary:#B4F9DC;
+$black: #000;
+$secondary: #B4F9DC;
+$third: #D1D5FF;
+
+.card {
+    color: $black;
+    background-color: $primary;
+    margin-top: 30px;
+  }
+.btn-info {
+    background-color: $third;
+    color: $black;
+    --bs-btn-border-color: $third;
+    width: fit-content;
+    margin-right: 10px;
+    margin-right: 10px;
+}
+.btn{
+    background-color: $third;
+    color: $black;
+}
+.border{
+    background-color: $third;
+    color: $black;
+}
