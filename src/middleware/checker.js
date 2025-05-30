@@ -1,20 +1,16 @@
 const checker = (store) => (next) => (action) => {
-    console.log(action);
-  if (
-    action.type === 'todos/addTodo' &&
-    action.payload.name.toLowerCase().includes("bitcoin")
-  ) {
-    return alert("Nope. That's a bad idea.");
+  console.log('Dispatching action:', action);
+
+  const forbiddenWord = "bitcoin";
+  const isTodoAdd = action.type === 'todos/addTodo';
+  const isGoalAdd = action.type === 'goals/addGoal';
+  const name = action.payload?.name?.toLowerCase() || '';
+
+  if ((isTodoAdd || isGoalAdd) && name.includes(forbiddenWord)) {
+    alert("Nope. That's a bad idea.");
+    return; // Block the action
   }
 
-  if (
-    action.type === 'goals/addGoal' &&
-    action.payload.name.toLowerCase().includes("bitcoin")
-  ) {
-    return alert("Nope. That's a bad idea.");
-  }
-  console.log('esta es la accion');
-  console.log(action);
   return next(action);
 };
 
