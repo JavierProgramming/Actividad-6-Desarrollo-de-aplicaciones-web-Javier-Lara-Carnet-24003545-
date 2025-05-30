@@ -7,11 +7,15 @@ export const optionSlice = createSlice({
     },
     reducers: {
         changeOption: (state, action) => {
-            state.value=action.payload;
+            if (['tasks', 'goals'].includes(action.payload)) {
+                state.value = action.payload;
+            } else {
+                console.warn(`Invalid option value: ${action.payload}`);
+            }
         }
     }
-})
+});
 
-export const { changeOption } =  optionSlice.actions
+export const { changeOption } = optionSlice.actions;
 
-export default optionSlice.reducer
+export default optionSlice.reducer;
