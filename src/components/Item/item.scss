@@ -1,28 +1,52 @@
-
-$body-bg:#000;
-$primary:#B4F9DC;
+$body-bg: #000;
+$primary: #B4F9DC;
 $black: #000;
 $secondary: #B4F9DC;
 $third: #D1D5FF;
 
 .card {
-    color: $black;
-    background-color: $primary;
-    margin-top: 30px;
+  color: $black;
+  background-color: $primary;
+  margin-top: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   }
+}
+
 .btn-info {
-    background-color: $third;
+  background-color: $third;
+  color: $black;
+  border: none;
+  width: fit-content;
+  margin-right: 10px;
+  padding: 8px 18px;
+  font-weight: 600;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(209, 213, 255, 0.4);
+  transition: background-color 0.3s ease;
+
+  &:hover,
+  &:focus {
+    background-color: darken($third, 10%);
     color: $black;
-    --bs-btn-border-color: $third;
-    width: fit-content;
-    margin-right: 10px;
-    margin-right: 10px;
+  }
 }
-.btn{
-    background-color: $third;
-    color: $black;
+
+.btn {
+  background-color: $third;
+  color: $black;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(209, 213, 255, 0.3);
 }
-.border{
-    background-color: $third;
-    color: $black;
+
+.border {
+  background-color: $third;
+  color: $black;
+  border-radius: 8px;
+  border: none;
 }
