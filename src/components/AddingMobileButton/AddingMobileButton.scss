@@ -1,10 +1,27 @@
 .btn-info {
-    margin-left: 10px;
-    margin-top: 20px;
-    
+  margin: 1.25rem 0 0 0.625rem; // equivalente a 20px top, 10px left
+  background-color: #17a2b8; // info color
+  border: none;
+  transition: background-color 0.3s ease;
 
+  &:hover {
+    background-color: #138496;
+  }
 }
+
 .btn-addgoal {
-    width: 200px;
-    height: 35px;
+  width: 200px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  gap: 8px;
+
+  @media (max-width: 576px) {
+    width: 100%;
+    margin: 0 auto;
+  }
 }
