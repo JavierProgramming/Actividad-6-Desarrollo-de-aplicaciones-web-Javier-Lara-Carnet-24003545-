@@ -1,45 +1,37 @@
+import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import "./item.scss";
-import {
-  removeTodo,
-} from '../../reducers/todoSlice'
 import { useDispatch } from 'react-redux';
+import { removeTodo } from '../../reducers/todoSlice';
+import './item.scss';
 
-
-function Item(props) {
+const Item = ({ id, name, description, dueDate }) => {
   const dispatch = useDispatch();
 
-  const removeItem = (e) => {
-    e.preventDefault();
-    console.log("Removing item: ", props);
-    console.log(props.id);
-      dispatch(removeTodo(props.id));
-    }
+  const handleRemoveClick = (event) => {
+    event.preventDefault();
+    dispatch(removeTodo(id));
+  };
 
   return (
-    <Card >
+    <Card className="mb-3 shadow-sm item-card">
       <Card.Body>
-        <Card.Title >{props.name}</Card.Title>
-        <Card.Text className="fw-bold">
-          Description
-        </Card.Text>
-        <Card.Text>
-          {props.description}
-        </Card.Text>
-        <Card.Text className="fw-bold">
-          Due Date
-        </Card.Text>
-        <Card.Text>
-          {props.dueDate}
-        </Card.Text>
+        <Card.Title className="item-title">{name}</Card.Title>
+
+        <Card.Subtitle className="mb-2 text-muted">Description</Card.Subtitle>
+        <Card.Text>{description}</Card.Text>
+
+        <Card.Subtitle className="mb-2 text-muted">Due Date</Card.Subtitle>
+        <Card.Text>{dueDate}</Card.Text>
       </Card.Body>
-      <Card.Body>
-        {/*<Button variant="info">Editar</Button>*/}
-        <Button variant="info" onClick={removeItem}>Eliminar</Button>
-      </Card.Body>
+
+      <Card.Footer className="bg-transparent border-top-0 d-flex justify-content-end">
+        <Button variant="info" onClick={handleRemoveClick}>
+          Eliminar
+        </Button>
+      </Card.Footer>
     </Card>
   );
-}
+};
 
 export default Item;
