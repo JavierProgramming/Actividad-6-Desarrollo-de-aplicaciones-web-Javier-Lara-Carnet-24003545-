@@ -1,11 +1,13 @@
 import Button from 'react-bootstrap/Button';
-import './AddingMobileButton.scss'
+import { PlusCircle } from 'react-bootstrap-icons';
+import './AddingMobileButton.scss';
 
 function AddingMobileButton() {
   return (
-    <>
-      <Button variant="info" className='btn-addgoal'>Add Goal</Button>
-    </>
+    <Button variant="info" className="btn-addgoal" aria-label="Agregar nueva meta">
+      <PlusCircle className="me-2" />
+      Agregar Meta
+    </Button>
   );
 }
 
