@@ -1,30 +1,37 @@
-import List from "./list";
+import React, { useRef, useState } from 'react';
+import List from './list';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useState} from 'react';
-import {
-    addTodo,
-    selectTodos
-} from '../reducers/todoSlice'
-import { useRef } from "react";
+import { addTodo, selectTodos } from '../reducers/todoSlice';
 
-export function Todos(){
-    const dispatch = useDispatch();
-    const todos = useSelector(selectTodos);
-    const inputRef = useRef();
+export function Todos() {
+  const dispatch = useDispatch();
+  const todos = useSelector(selectTodos);
+  const inputRef = useRef();
+  const [error, setError] = useState('');
 
-    const addItem = (e) => {
-        e.preventDefault();
-        console.log(inputRef.current);
-        dispatch(addTodo({'name': inputRef.current.value}))
+  const addItem = (e) => {
+    e.preventDefault();
+    const value = inputRef.current.value.trim();
+
+    if (!value) {
+      setError('Please enter a valid todo name.');
+      return;
     }
 
-    return (
-        <div>
-          <h1>Todo List</h1>
-          <input type="text" placeholder="Add Todo" ref={inputRef} />
-          <button onClick={addItem}>Add Todo</button>
-    
-          <List items={todos} />
-        </div>
-      );
+    dispatch(addTodo({ name: value }));
+    inputRef.current.value = '';
+    setError('');
+  };
+
+  return (
+    <div>
+      <h1>Todo List</h1>
+      <form onSubmit={addItem}>
+        <input type="text" placeholder="Add Todo" ref={inputRef} aria-label="New todo" />
+        <button type="submit">Add Todo</button>
+      </form>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <List items={todos} />
+    </div>
+  );
 }
