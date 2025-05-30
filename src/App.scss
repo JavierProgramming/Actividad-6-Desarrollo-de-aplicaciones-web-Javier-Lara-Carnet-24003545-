@@ -5,10 +5,8 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
+  @media (prefers-reduced-motion: no-preference) {
     animation: App-logo-spin infinite 20s linear;
   }
 }
@@ -36,13 +34,18 @@
     transform: rotate(360deg);
   }
 }
-.scrolling{
-  max-height: 1200px; 
+
+.scrolling {
+  max-height: 75vh;
   overflow-y: auto;
+  padding: 0 10px;
 }
 
-.overlapping-div { 
-  position: absolute; 
-  z-index: 100; /* Adjust the z-index value as needed */ 
+/* Botón flotante o cualquier elemento móvil */
+.overlapping-div {
+  position: absolute;
+  z-index: 100;
   text-align: left;
-} 
+  top: 1rem; // o ajusta según tu layout
+  left: 1rem;
+}
